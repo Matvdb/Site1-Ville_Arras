@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Accueil - Arras{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+
+        <div class="col-10 text-primary">
+            <h2 class="text-center mt-4 pt-4 display-1 fw-bold">Bienvenu dans cette superbe ville !</h2>
+        </div>
+    </div>
+</div><br>
+<div class="container">
+    <h3 class="text-center text-secondary">Ce site te présenteras toutes les informations importantes à savoir sur Arras<br>
+        <strong>Bonne lecture ;)</strong></h3><br>
+</div>
+<div class="container text-center">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://static.actu.fr/uploads/2020/03/arras-illustration.jpg" class="rounded d-block w-10 h-40" alt="">
+            </div>
+            <div class="carousel-item">
+                <img src="https://static.actu.fr/uploads/2021/03/terrasses-arras.jpg" class="rounded d-block w-10 h-40" alt="">
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Précédent</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Suivant</span>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

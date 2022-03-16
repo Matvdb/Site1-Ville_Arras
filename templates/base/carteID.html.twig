@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Les services - Arras{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h2 class="text-center text-info mt-4 pt-4 display-1 fw-bold">Carte d'identité</h2>
+</div>
+<div class="container-fluid text-center bg-info">
+    <h3>Pour demander une carte nationale d'identité, les pièces justificatives nécessaires dépendent de la situation : majeur ou mineur, première demande ou renouvellement, possession (ou non) d'un passeport... Pour toute demande, veuillez remplir ce formulaire ou contactez le service Etat Civil</h3>
+</div>
+{{form(form)}}
+<div class="container-fluid text-center">
+    <img src="https://www.ville-firminy.fr/wp-content/uploads/2019/08/entete-cniPasseport.jpg" class="rounded">
+</div> {% endblock %}

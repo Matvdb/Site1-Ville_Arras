@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Avis - Arras{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+
+        <div class="col-10 text-info">
+            <h2 class="text-center mt-4 pt-4 display-1 fw-bold">Avis</h2>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-center bg-info">
+    <h3>Merci pour votre visite sur ce site, j'espère qu'il vous aura été utile !<br>Je vous invite à remplir ce formulaire, afin de laisser un avis sur ce site</h3>
+</div>
+{{form(form)}}
+{% endblock %}
