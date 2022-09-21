@@ -3,7 +3,7 @@
 {% block title %}{{parent()}}Avis - Arras{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
+<div class="container">
     <div class="row justify-content-center">
 
         <div class="col-10 text-info">
@@ -11,8 +11,12 @@
         </div>
     </div>
 </div>
-<div class="container-fluid text-center bg-info">
+<div class="container text-center">
     <h3>Merci pour votre visite sur ce site, j'espère qu'il vous aura été utile !<br>Je vous invite à remplir ce formulaire, afin de laisser un avis sur ce site</h3>
+
 </div>
-{{form(form)}}
+<div class="container text-center text-primary">
+
+    {{form(form)}}
+</div>
 {% endblock %}

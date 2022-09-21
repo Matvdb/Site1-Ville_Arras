@@ -1,0 +1,35 @@
+body {
+    background-image: url(https://cdn.myportfolio.com/6e6f25c5-e635-43af-a762-4f6adae435ae/23934498-e974-4c8e-bd4a-4108ed7a6682_rw_1920.jpg?h=4f17b43e2f20154713ab0fb25f9054a7);
+
+
+}
+
+
+
+.container {
+    opacity: 80%;
+    background-color: white;
+    transition: 1s;
+
+
+}
+
+.container:hover {
+    opacity: 100%;
+    transition: 1s;
+}
+
+nav {
+    background-image: url(https://mobimg.b-cdn.net/v3/fetch/70/703e3aefd9500eff0f63294bc383ac2a.jpeg);
+    opacity: 80%;
+    transition: 1s;
+}
+
+nav:hover {
+    opacity: 100%;
+    transition: 1s;
+}
+
+h4 {
+    overflow: scroll;
+}

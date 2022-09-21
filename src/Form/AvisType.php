@@ -22,9 +22,10 @@ class AvisType extends AbstractType
         ->add('Note', RangeType::class, [
                 'attr' => [
                     'min' => 0,
-                    'max' => 5
-                ]
-            ])
+                    'max' => 5,
+                ],
+                'attr'=>['class'=> 'form-control'], 'label_attr' => ['class'=> 'fw-bold']])
+            
         ->add('Message', TextareaType::class, ['attr' => ['class'=> 'form-control', 'rows'=>'7', 'cols' => '7'], 'label_attr' => ['class'=> 'fw-bold']])
         ->add('Envoyer', SubmitType::class, ['attr' => ['class'=> 'btn bg-primary text-white m-4' ], 'row_attr' => ['class' => 'text-center'],])
         ;

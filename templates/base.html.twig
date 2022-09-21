@@ -8,85 +8,82 @@
     {% block stylesheets %}
     <!-- Bootstrap CSS -->
     <link href="https://bootswatch.com/5/lumen/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/Site1/share/templates/style/style.css">
     {% endblock %} <title>{% block title %} {% endblock %}</title>
 </head>
 
 <body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="nav-link active" href="{{path('index')}}"> <img src="https://upload.wikimedia.org/wikipedia/fr/d/d7/Logo_arras.jpg" class="rounded col-2"> <i class="bi bi-toggle-on"></i></a></i>
+                {% else %}
+                <a class="nav-link active" href="{{path('index')}}"> <img src="https://upload.wikimedia.org/wikipedia/fr/d/d7/Logo_arras.jpg" class="rounded col-2"> <i class="bi bi-toggle-off"></i></a></i>
+                {% endif %}
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('index')}}">Accueil</a>
+                        </li>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{path('index')}}"><strong>Arras</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Administration
-                </a>
-                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_MOD')%}
-
-
-                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                    <li><a class="dropdown-item" href="{{path('list-contact')}}">List des Contact</a></li>
-                    <li><a class="dropdown-item" href="#">List des utilisateurs</a></li>
-                    <li>
-                    </li>
-                </ul>{% endif %}
-            </li>
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{path('ajout-fichier')}}">Fichier
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{path('index')}}">Accueil
-                            <span class="visually-hidden">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('contact')}}">Contact
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('presentation')}}">Présentation de la ville</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Les services</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{path('ecoles')}}">Ecoles</a>
-                            <a class="dropdown-item" href="{{path('carteID')}}">Carte d'identité</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Réseaux sociaux</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="https://www.facebook.com/VilleArras">Facebook</a>
-                            <a class="dropdown-item" href="https://twitter.com/VilleArras">Twitter</a>
-                            <a class="dropdown-item" href="https://www.instagram.com/villearras/?hl=fr">Instagram</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('avis')}}">Avis</a>
-                    </li>
-                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %} <li class="nav-item">
-                        <a class="nav-link text-white" href="{{path('app_login')}}">Se connecter
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{path('app_register')}}">S'inscrire
-                        </a>
-                    </li>
-                    {% else %}
-                    {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('presentation')}}">Présentation de la ville</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('contact')}}">Contact</a>
+                        </li>
 
 
 
-                </ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Réseaux sociaux</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="https://www.facebook.com/VilleArras">Facebook</a>
+                                <a class="dropdown-item" href="https://twitter.com/VilleArras">Twitter</a>
+                                <a class="dropdown-item" href="https://www.instagram.com/villearras/?hl=fr">Instagram</a>
+                            </div>
+                        </li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Carte d'identité</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{path('carteID')}}">Demande de carte d'identité</a>
+                                <a class="dropdown-item" href="{{path('ajout-fichier')}}">Liste des demandes</a>
+                                <a class="dropdown-item" href="{{path('carte_identite')}}">Suivez votre demande</a>
+                            </div>
+                        </li>
+
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('avis')}}">Avis</a>
+                        </li>
+
+                        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{path('app_login')}}">Se connecter
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{path('app_register')}}">S'inscrire
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{path('app_login')}}"> {{app.user.email}}
+                                <i class="bi bi-x-circle-fill text-white"></i>
+                            </a>
+                        </li>
+
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     {% for message in app.flashes('notice') %}
     <h2 class=" alert alert-warning text-center mt-4 mb-4" role="alert">
@@ -101,5 +98,7 @@
     {% endblock %}
 
 </body>
+
+</html>
 
 </html>

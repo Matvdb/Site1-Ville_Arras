@@ -8,9 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\ContactType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
-
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+
 use App\Entity\Contact;
 use App\Form\AvisType;
 use App\Form\EcoleType;
@@ -32,28 +31,11 @@ class BaseController extends AbstractController
     #[Route('/contact', name: 'contact')]
     public function contact(Request $request, MailerInterface $mailer): Response
     {
-        $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
+        $form = $this->createForm(ContactType::class);
 
         if($request->isMethod('POST')){
             $form->handleRequest($request);
             if ($form->isSubmitted()&&$form->isValid()){   
-                $email = (new TemplatedEmail())
-                ->from($contact->getEmail())
-                ->to('reply@nuage-pedagogique.fr')
-                ->subject($contact->getSujet())
-                ->htmlTemplate('emails/email.html.twig')
-                ->context([
-                    'nom'=> $contact->getNom(),
-                    'sujet'=> $contact->getSujet(),
-                    'message'=> $contact->getMessage()
-                ]);
-                $contact->setDateEnvoi(new \Datetime());
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($contact);
-                $em->flush();
-              
-                $mailer->send($email);
                 $this->addFlash('notice','Message envoyé');
                 return $this->redirectToRoute('contact');
             }
@@ -74,26 +56,50 @@ class BaseController extends AbstractController
     }
 
     #[Route('/ecoles', name: 'ecoles')]
-    public function services(): Response
+    public function services(Request $request): Response
     {
         $form = $this->createForm(EcoleType::class);
+
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
+            if ($form->isSubmitted()&&$form->isValid()){   
+                $this->addFlash('notice','Votre demande a bien été prise en compte !');
+                return $this->redirectToRoute('ecoles');
+            }
+        }
         return $this->render('base/ecoles.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
     #[Route('/carteID', name: 'carteID')]
-    public function carteID(): Response
+    public function carteID(Request $request): Response
     {
         $form = $this->createForm(CarteIDType::class);
+
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
+            if ($form->isSubmitted()&&$form->isValid()){   
+                $this->addFlash('notice','Votre demande de carte a bien été prise en compte ! Désormais, suivez votre demande.');
+                return $this->redirectToRoute('carteID');
+            }
+        }
         return $this->render('base/carteID.html.twig', [
             'form' => $form->createView()
         ]);
     }
     #[Route('/avis', name: 'avis')]
-    public function avis(): Response
+    public function avis(Request $request): Response
     {
         $form = $this->createForm(AvisType::class);
+
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
+            if ($form->isSubmitted()&&$form->isValid()){   
+                $this->addFlash('notice','Votre avis compte beaucoup, merci !');
+                return $this->redirectToRoute('avis');
+            }
+        }
         return $this->render('base/avis.html.twig', [ // étape 3
             'form' => $form->createView()
         ]);
@@ -126,6 +132,22 @@ class BaseController extends AbstractController
         $this->addFlash('notice', 'Adresse vérifiée');
 
         return $this->redirectToRoute('app_login');
+    }
+    #[Route('/suivi', name: 'suivi')]
+    public function suivi(Request $request): Response
+    {
+        $form = $this->createForm(SuiviIDType::class);
+
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
+            if ($form->isSubmitted()&&$form->isValid()){   
+                $this->addFlash('notice','Votre demande de carte a bien été prise en compte ! Désormais, suivez votre demande.');
+                return $this->redirectToRoute('suivi');
+            }
+        }
+        return $this->render('base/demandeid.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 } 
  

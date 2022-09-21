@@ -1,17 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-{{parent()}}Ajouter un fichier
+{{parent()}}Liste des demandes
 {% endblock %}
 
 {% block body %}
 <div class="container-fluid">
-    <h1 class="text-center text-primary mt-4 pt-4 display-1 fw-bold">
-        Ajouter un fichier</h1>
-</div>
-<div class="row justify-content-center">
-    <div class="col-12 col-md-8 bg-white p-4 m-0 text-primary">
-        {{form(form)}}
-    </div>
-</div>
-{% endblock %}
+    <h1 class="text-center text-primary mt-4 pt-4 display-1 fw-bold">Liste des demandes</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-12 bg-white p-4 m-0 text-primary">
+            <div class="table-responsive">
+                <table class="table caption-top">
+                    <caption>Listes des demandes de carte d'identité</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom <i class="bi bi-award-fill"></i></th>
+                            <th scope="col">Date <i class="bi bi-calendar-date"></i></th>
+                            <th scope="col">Extension <i class="bi bi-file-earmark-pdf"></i></th>
+                            <th scope="col">Taille <i class="bi bi-file-earmark"></i></th>
+                            <th scope="col">Dl <i class="bi bi-download"></i></a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        </tr>
+                    </tbody>
+                    {% endblock %}

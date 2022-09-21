@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Link
+Icon=cheese
+Icon[fr_FR]=cheese
+Name[fr_FR]=Data
+URL=/data
+Name=Data
